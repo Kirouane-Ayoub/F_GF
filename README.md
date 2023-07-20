@@ -1,4 +1,4 @@
-# F_GF
+# Fake Girlfriend
 
 
 The "Fake Girlfriend" project using Langchain and GPT-3 is a playful application that simulates a conversation with a fictional character, named Alisa, who acts as a virtual girlfriend. The project involves integrating the Langchain library and the GPT-3 model to create an interactive dialogue with Alisa.

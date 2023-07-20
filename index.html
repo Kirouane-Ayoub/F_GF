@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conversation API</title>
+</head>
+<body>
+    <h1>Conversation API</h1>
+    <form id="conversation-form">
+        <label for="input-text">Your Input Text:</label>
+        <input type="text" id="input-text" name="input-text" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Response:</h2>
+    <pre id="response"></pre>
+
+    <script>
+        const form = document.getElementById("conversation-form");
+        const responseElement = document.getElementById("response");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const inputText = document.getElementById("input-text").value;
+
+            try {
+                const response = await fetch("/conversation", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ input: inputText }),
+                });
+
+                const data = await response.json();
+                responseElement.innerText = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error(error);
+                responseElement.innerText = "An error occurred. Please check the console.";
+            }
+        });
+    </script>
+</body>
+</html>
+
